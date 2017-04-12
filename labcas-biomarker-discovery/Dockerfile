@@ -26,5 +26,8 @@ RUN cd /tmp && \
 
 # install latest version of labcas biomarker-discovery workflow into $LABCAS_HOME
 RUN cd $LABCAS_SRC/labcas-backend && \
-    git pull && \
+    git pull &&  \
     mvn install -Dworkflow=biomarker-discovery
+
+# copy scripts
+COPY scripts/ecs/*.sh /usr/local/bin
