@@ -19,8 +19,7 @@ RUN cd $LABCAS_SRC/labcas-backend && \
 RUN cd $LABCAS_SRC/labcas-backend && \
     mvn install -Dworkflow=labcas-upload && \
     mvn install -Dworkflow=labcas-test && \
-    mvn install -Dworkflow=nist && \
-    mvn install -Dworkflow=waf
+    mvn install -Dworkflow=nist
 
 # expose service ports
 EXPOSE 9000 9001 9002 8983
