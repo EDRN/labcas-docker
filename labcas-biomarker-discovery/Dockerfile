@@ -29,5 +29,9 @@ RUN cd $LABCAS_SRC/labcas-backend && \
     git pull &&  \
     mvn install -Dworkflow=biomarker-discovery
 
-# copy scripts
-COPY scripts/ecs/*.sh /usr/local/bin
+# install rabbitmq clients
+COPY rabbitmq_clients/ $LABCAS_HOME/rabbitmq/
+
+# install startup script
+COPY conf/  /etc/supervisor/
+COPY scripts/*.sh $LABCAS_HOME/
