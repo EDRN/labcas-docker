@@ -33,5 +33,5 @@ RUN cd $LABCAS_SRC/labcas-backend && \
 COPY rabbitmq_clients/ $LABCAS_HOME/rabbitmq/
 
 # install startup script
-COPY conf/  /etc/supervisor/
-COPY scripts/*.sh $LABCAS_HOME/
+COPY conf/*.conf  /etc/supervisor/
+COPY scripts/*.sh  $LABCAS_HOME/
