@@ -48,7 +48,7 @@ def main(ncv):
 if __name__ == '__main__':
     """ Parse command line arguments. """
     
-    if len(sys.argv) < 1:
+    if len(sys.argv) < 2:
         raise Exception("Usage: python labcas_biomarker_discovery_driver.py <number_of_cross_validations>")
     else:
         ncv = int( sys.argv[1] )
