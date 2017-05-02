@@ -41,7 +41,7 @@ services:
   # OODT workflow manager with biomarker discovery workflow
   wmgr:
     image: edrn/labcas-biomarker-discovery
-    container_name: wmgr
+    #container_name: wmgr
     expose:
       - "9001"
     ports:
@@ -57,11 +57,8 @@ services:
       - "RABBITMQ_ADMIN_URL=http://oodt-admin:changeit@rabbitmq:15672"
     networks:
       default:
-    entrypoint: ["/usr/local/oodt/start_wmgr.sh", "biomarker_discovery"]
+    entrypoint: ["/usr/local/oodt/start_wmgr.sh", "biomarker-discovery"]
 
-
-
-  
 
 # persistent data volumes
 volumes:

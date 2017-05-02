@@ -12,7 +12,7 @@ sleep 10
 # one consumer per workflow specified as script argument
 for arg in "$@"; do
   echo "RabbitMQ consumer listening to queue ${arg}..."
-  python /usr/local/oodt/rabbitmq/rabbitmq_client.py pull $arg 2 &
+  python /usr/local/oodt/rabbitmq/rabbitmq_client.py pull $arg 1 &
 done
 
 # tail log file to keep container running
