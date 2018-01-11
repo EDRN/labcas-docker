@@ -1,4 +1,4 @@
-# Docker image containig core LabCAS back-end services.
+# Docker image containing core LabCAS back-end services.
 
 FROM edrn/labcas-node
 
@@ -21,14 +21,21 @@ RUN cd $LABCAS_SRC/labcas-backend && \
     mvn install -Dworkflow=labcas-test && \
     mvn install -Dworkflow=nist
 
+# crate non-privileged Solr user (Solr does not run as root)
+RUN groupadd solr && \
+    useradd -s /sbin/nologin -g solr -d /usr/local/solr solr
+RUN mkdir $LABCAS_HOME/solr-index
+RUN chown -R solr:solr $LABCAS_HOME/solr-home $LABCAS_HOME/solr/server $LABCAS_HOME/solr-index
+
 # expose service ports
-EXPOSE 9000 9001 9002 8983
+EXPOSE 9000 9001 9002 8983 8080
 
 # copy configuration and startup scripts
-COPY scripts/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-COPY conf/ /etc/supervisor/
+#COPY scripts/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY conf/supervisord.conf /etc/supervisord.conf
+COPY conf/supervisord-*.conf /etc/supervisor/conf.d/
 
-# start labcas services
-#ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-# command can be overridden by child images, or at run time
-CMD ["/usr/local/bin/docker-entrypoint.sh"]
+# default command starts supervisor in non-daemon mode
+# to be overridden by child images
+CMD ["supervisord", "--nodaemon", "-c", "/etc/supervisord.conf"]
+
