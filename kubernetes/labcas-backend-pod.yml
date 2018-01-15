@@ -17,9 +17,9 @@ spec:
     - containerPort: 8080
     volumeMounts:
     - name: labcas-archive
-      mountPath: /data/labcas-archive
+      mountPath: /usr/local/oodt/archive/
     - name: solr-index
-      mountPath: /data/solr-index
+      mountPath: /usr/local/oodt/solr-index/
   volumes:
   - name: labcas-archive
     emptyDir: {}
