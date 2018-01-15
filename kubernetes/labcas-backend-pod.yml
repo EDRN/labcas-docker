@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labcas-backend
+  labels:
+    stack: labcas
+    tier: backend
+spec:
+  containers:
+  - name: labcas-backend
+    image: edrn/labcas-backend:latest
+    ports:
+    - containerPort: 9000
+    - containerPort: 9001
+    #- containerPort: 9002
+    - containerPort: 8983
+    - containerPort: 8080
+    volumeMounts:
+    - name: labcas-archive
+      mountPath: /data/labcas-archive
+    - name: solr-index
+      mountPath: /data/solr-index
+  volumes:
+  - name: labcas-archive
+    emptyDir: {}
+  - name: solr-index
+    emptyDir: {}
+
