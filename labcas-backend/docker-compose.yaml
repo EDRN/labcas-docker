@@ -1,0 +1,17 @@
+# Docker compose file for running the LabCAS back-end container
+
+version: '3.4'
+
+services:
+
+   labcas-backend:
+      image: edrnhub/labcas-backend
+      container_name: labcas-backend
+      ports:
+        - "8983:8983"
+        - "9000:9000"
+        - "9001:9001"
+        - "8080:8080"
+      volumes: 
+        - $LABCAS_ARCHIVE:/usr/local/labcas_archive
+   
