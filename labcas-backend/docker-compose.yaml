@@ -12,7 +12,7 @@ version: '3.4'
 services:
 
    labcas-backend:
-      image: edrnhub/labcas-backend
+      image: edrn/labcas-backend
       container_name: labcas-backend
       ports:
         - "8983:8983"
