@@ -6,8 +6,14 @@
 
 # Required files:
 # ~/labcas.properties
+# ~/labcas_certs
 
 version: '3.3'
+
+networks: 
+  default:
+    external: 
+      name: labcas-network 
 
 services:
 
