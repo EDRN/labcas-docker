@@ -39,7 +39,6 @@ services:
         - $LABCAS_STAGING:/usr/local/labcas_staging
         - $LABCAS_ARCHIVE:/usr/local/labcas_archive
         - $LABCAS_HOME/solr-index:/usr/local/labcas/solr-index
-        - $LABCAS_HOME/solr-home:/usr/local/labcas/solr-home
         - $HOME/labcas.properties:/root/labcas.properties
         - $HOME/labcas_certs:/root/certs
    
