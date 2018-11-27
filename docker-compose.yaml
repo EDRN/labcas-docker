@@ -46,8 +46,6 @@ services:
       #image: edrn/labcas-frontend
       image: httpd:2.4
       container_name: labcas-frontend
-      ports:
-        - "8000:80"
       volumes: 
         - $LABCAS_STAGING:/usr/local/labcas_staging
         - $LABCAS_ARCHIVE:/usr/local/labcas_archive
