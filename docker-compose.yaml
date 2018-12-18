@@ -41,8 +41,8 @@ services:
         - $LABCAS_STAGING:/usr/local/labcas_staging
         - $LABCAS_ARCHIVE:/usr/local/labcas_archive
         - $LABCAS_HOME/solr-index:/usr/local/labcas/solr-index
-        - $HOME/labcas.properties:/root/labcas.properties
-        - $HOME/labcas_certs:/root/certs
+      # - $HOME/labcas.properties:/root/labcas.properties
+      # - $HOME/labcas_certs:/root/certs
         
    #labcas-frontend: 
    #   #image: edrn/labcas-frontend
