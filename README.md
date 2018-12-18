@@ -24,3 +24,7 @@
 * Start the containers:
   * docker-compose up -d
   * docker-compose logs -f
+  
+* After starting, Solr will be available at either of these 2 URLs:
+  * http://localhost:8983/solr
+  * http://localhost/solr
