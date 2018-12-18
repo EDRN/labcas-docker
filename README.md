@@ -17,7 +17,10 @@
   * export LABCAS_HOME=/usr/local/labcas/home
   * export LABCAS_ARCHIVE=/usr/local/labcas/archive
   * export LABCAS_STAGING=/usr/local/labcas/staging
-  
+
+* Optional: pull the labcas-backend Docker container ahead of time:
+  * docker pull edrn/labcas-backend
+
 * Start the containers:
   * docker-compose up -d
   * docker-compose logs -f
