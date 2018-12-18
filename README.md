@@ -3,7 +3,7 @@
 ## How to start the labcas-backend
 
 * Download this repository, use the master branch (which is the latest stable release):
-  git clone https://github.com/EDRN/labcas-docker.git
+  * git clone https://github.com/EDRN/labcas-docker.git
   
 * Create the shared docker network:
   * docker-network create labcas-network
