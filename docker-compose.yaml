@@ -41,16 +41,29 @@ services:
         - $LABCAS_STAGING:/usr/local/labcas_staging
         - $LABCAS_ARCHIVE:/usr/local/labcas_archive
         - $LABCAS_HOME/solr-index:/usr/local/labcas/solr-index
-      # - $HOME/labcas.properties:/root/labcas.properties
-      # - $HOME/labcas_certs:/root/certs
+        - $HOME/labcas.properties:/root/labcas.properties
+        - $HOME/labcas_certs:/root/certs
         
-   #labcas-frontend: 
-   #   #image: edrn/labcas-frontend
-   #   image: httpd:2.4
-   #   container_name: labcas-frontend
-   #   volumes: 
-   #     - $LABCAS_STAGING:/usr/local/labcas_staging
-   #     - $LABCAS_ARCHIVE:/usr/local/labcas_archive
-   #     - $HOME/labcas.properties:/root/labcas.properties
-   #     - $HOME/labcas_certs:/root/certs
-   
+   labcas-frontend: 
+      image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
+      container_name: labcas-ui
+      build:
+        context: ./labcas-ui
+      ports:
+        - "6543:6543"
+      env_file: .env
+      volumes: 
+        - $LABCAS_STAGING:/usr/local/labcas_staging
+        - $LABCAS_ARCHIVE:/usr/local/labcas_archive
+        - $HOME/labcas_certs:/app/certs
+        - persistence:/app/persistence
+        # FIXME
+        #- $PWD/paste.cfg:/app/persistence/paste.cfg
+      healthcheck:
+            test: ["CMD", "curl", "--fail", "http://localhost:6543"]
+            interval: 5m
+            timeout: 10s
+            retries: 3
+
+volumes:
+    persistence:
