@@ -63,7 +63,6 @@ EXPOSE 9000 9001 8983 8080
 COPY conf/supervisord.conf /etc/supervisord.conf
 COPY conf/supervisord-*.conf /etc/supervisor/conf.d/
 
-# default command starts supervisor in non-daemon mode
-# to be overridden by child images
+# start supervisor in non-daemon mode
 CMD ["supervisord", "--nodaemon", "-c", "/etc/supervisord.conf"]
 #CMD ["/usr/local/bin/docker-entrypoint.sh"]
