@@ -13,8 +13,8 @@ RUN apt-get update
 ENV LABCAS_SRC /tmp
 RUN cd $LABCAS_SRC && \
     git clone https://github.com/EDRN/labcas-backend.git && \
-    cd labcas-backend
-# git checkout -b devel origin/devel
+    cd labcas-backend &&\
+    git checkout -b devel origin/devel
 
 # install all services into $LABCAS_HOME
 # Note: pom.xml will configure core.properties to use $LABCAS_HOME/solr-index/<core>/ as location of Solr index

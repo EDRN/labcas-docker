@@ -17,16 +17,11 @@
 
 version: '3.3'
 
-networks: 
-  default:
-    external: 
-      name: labcas-network 
-
 services:
 
    nginx:
      image: nginx
-     container_name: nginx
+     #container_name: nginx
      #command: [nginx-debug, '-g', 'daemon off;']
      ports:
         - "80:80"
@@ -39,14 +34,14 @@ services:
 
    labcas-backend: 
       image: edrn/labcas-backend:${LABCAS_BK_VERSION-latest}
-      container_name: labcas-backend
+      #container_name: labcas-backend
       build:
         context: ./labcas-backend
-      ports:
-        - "8983:8983"
-        - "9000:9000"
-        - "9001:9001"
-        - "8080:8080"
+      #ports:
+      #  - "8983:8983"
+      #  - "9000:9000"
+      #  - "9001:9001"
+      #  - "8080:8080"
       volumes: 
         - $LABCAS_STAGING:/usr/local/labcas_staging
         - $LABCAS_ARCHIVE:/usr/local/labcas_archive
@@ -56,11 +51,11 @@ services:
         
    labcas-ui: 
       image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
-      container_name: labcas-ui
+      #container_name: labcas-ui
       # build:
       #  context: ./labcas-ui
-      ports:
-        - "6543:6543"
+      #ports:
+      #  - "6543:6543"
       env_file: $LABCAS_CONFIG/ui.env
       volumes: 
         - $LABCAS_STAGING:/usr/local/labcas_staging
@@ -69,8 +64,10 @@ services:
         - $LABCAS_ARCHIVE:/usr/local/labcas_archive
         - $LABCAS_CONFIG/paste.cfg:/app/persistence/paste.cfg
         - persistence:/app/persistence
+      depends_on:
+        - labcas-backend  
       healthcheck:
-            test: ["CMD", "curl", "--fail", "http://localhost:6543"]
+            test: ["CMD", "curl", "--fail", "http://labcas-ui:6543"]
             interval: 5m
             timeout: 10s
             retries: 3
