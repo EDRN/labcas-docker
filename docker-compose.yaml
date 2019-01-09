@@ -55,7 +55,7 @@ services:
         - $LABCAS_STAGING:/usr/local/labcas/staging
         - $LABCAS_ARCHIVE:/usr/local/labcas/archive
         # FIXME
-        - $HOME/eclipse-workspace/labcas-backend/common/src/main/python:/usr/local/labcas/python
+        #- $HOME/eclipse-workspace/labcas-backend/common/src/main/python:/usr/local/labcas/python
       command: ["tail", "-f", "/dev/null"]
  
         
