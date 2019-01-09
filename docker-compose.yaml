@@ -44,7 +44,7 @@ services:
         - $LABCAS_CONFIG/labcas.properties:/root/labcas.properties
         - $LABCAS_CONFIG/labcas_certs:/root/certs
       ports:
-        - "${LABCAS_SOLR_PORT}:8983"
+        - "8983:8983"
         
    labcas-ui: 
       image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
