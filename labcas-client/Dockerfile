@@ -16,7 +16,7 @@ RUN pip install openslide-python
 RUN cd /tmp && \
     git clone https://github.com/EDRN/labcas-backend.git &&\
     mkdir -p /usr/local/labcas/python &&\
-    cp -R /tmp/labcas-backend/common/src/main/python /usr/local/labcas/python
+    cp -R /tmp/labcas-backend/common/src/main/python /usr/local/labcas/.
     
 # install commands for publishing/unpublishing
 COPY ./bin /usr/local/bin
