@@ -18,7 +18,7 @@ RUN cd $LABCAS_SRC && \
 
 # install all services into $LABCAS_HOME
 # Note: pom.xml will configure core.properties to use $LABCAS_HOME/solr-index/<core>/ as location of Solr index
-ENV LABCAS_HOME /usr/local/labcas
+ENV LABCAS_HOME /usr/local/labcas/home
 RUN cd $LABCAS_SRC/labcas-backend && \
     mvn install
     
@@ -40,8 +40,8 @@ RUN apt-get update && \
     apt-get install -y supervisor
 
 # copy all built-up services to $LABCAS_HOME
-ENV LABCAS_HOME /usr/local/labcas
-COPY --from=labcas-build /usr/local/labcas $LABCAS_HOME
+ENV LABCAS_HOME /usr/local/labcas/home
+COPY --from=labcas-build /usr/local/labcas/home $LABCAS_HOME
 
 # setup environment
 ENV LABCAS_CONFIG $LABCAS_HOME/workflows

@@ -40,7 +40,7 @@ services:
       volumes: 
         - $LABCAS_STAGING:/usr/local/labcas/staging
         - $LABCAS_ARCHIVE:/usr/local/labcas/archive
-        - $LABCAS_HOME/solr-index:/usr/local/labcas/solr-index
+        - $LABCAS_HOME/solr-index:/usr/local/labcas/home/solr-index
         - $LABCAS_CONFIG/labcas.properties:/root/labcas.properties
         - $LABCAS_CONFIG/labcas_certs:/root/certs
       ports:
@@ -53,6 +53,8 @@ services:
       volumes: 
         - $LABCAS_STAGING:/usr/local/labcas/staging
         - $LABCAS_ARCHIVE:/usr/local/labcas/archive
+        # FIXME
+        - $HOME/eclipse-workspace/labcas-backend/common/src/main/python:/usr/local/labcas/python
       command: ["tail", "-f", "/dev/null"]
  
         

@@ -1,0 +1,5 @@
+#!/bin/bash
+# Shortcut script to invoke the LabCAS client for publishing a dataset
+
+cd /usr/local/labcas/python
+python gov/nasa/jpl/edrn/labcas/client/labcas_dataset_publisher.py "$@"

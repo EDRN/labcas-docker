@@ -5,9 +5,6 @@ FROM continuumio/miniconda
 RUN apt-get update &&\
     apt-get install -y gcc
 
-ENV LABCAS_STAGING /usr/local/labcas/staging
-ENV LABCAS_ARCHIVE /usr/local/labcas/archive
-
 # Install Python libraries needed by LabCAS client
 RUN pip install --upgrade pip
 RUN pip install solrpy numpy Pillow pydicom pypng pandas 
@@ -20,4 +17,10 @@ RUN cd /tmp && \
     git clone https://github.com/EDRN/labcas-backend.git &&\
     mkdir -p /usr/local/labcas/python &&\
     cp -R /tmp/labcas-backend/common/src/main/python /usr/local/labcas/python
+    
+# install commands for publishing/unpublishing
+COPY ./bin /usr/local/bin
+    
+ENV LABCAS_STAGING /usr/local/labcas/staging
+ENV LABCAS_ARCHIVE /usr/local/labcas/archive
 ENV PYTHONPATH /usr/local/labcas/python
