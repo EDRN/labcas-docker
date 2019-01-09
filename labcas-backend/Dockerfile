@@ -45,8 +45,8 @@ COPY --from=labcas-build /usr/local/labcas $LABCAS_HOME
 
 # setup environment
 ENV LABCAS_CONFIG $LABCAS_HOME/workflows
-ENV LABCAS_STAGING /usr/local/labcas_staging
-ENV LABCAS_ARCHIVE /usr/local/labcas_archive
+ENV LABCAS_STAGING /usr/local/labcas/staging
+ENV LABCAS_ARCHIVE /usr/local/labcas/archive
 
 ENV OODT_HOME $LABCAS_HOME
 ENV FILEMGR_URL http://localhost:9000/
