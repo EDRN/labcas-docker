@@ -41,6 +41,7 @@ services:
         - $LABCAS_STAGING:/usr/local/labcas/staging
         - $LABCAS_ARCHIVE:/usr/local/labcas/archive
         - $LABCAS_HOME/solr-index:/usr/local/labcas/home/solr-index
+        - $LABCAS_HOME/products:/usr/local/labcas/home/products
         - $LABCAS_CONFIG/labcas.properties:/root/labcas.properties
         - $LABCAS_CONFIG/labcas_certs:/root/certs
       ports:
