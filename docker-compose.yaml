@@ -52,9 +52,11 @@ services:
       build:
         context: ./labcas-client
       volumes: 
+        # NOTE: the labcas-client must share she same target filesystem as the labcas-backend
+        # to be able to crawl a directory tree and submit publishing requests
         - $LABCAS_STAGING:/usr/local/labcas/staging
         - $LABCAS_ARCHIVE:/usr/local/labcas/archive
-        # FIXME
+        # FIXME: for development only
         #- $HOME/eclipse-workspace/labcas-backend/common/src/main/python:/usr/local/labcas/python
       command: ["tail", "-f", "/dev/null"]
  
