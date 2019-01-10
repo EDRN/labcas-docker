@@ -58,8 +58,8 @@ services:
         - $LABCAS_ARCHIVE:/usr/local/labcas/archive
         # FIXME: for development only
         #- $HOME/eclipse-workspace/labcas-backend/common/src/main/python:/usr/local/labcas/python
+      # keep the container running to execute publishing operations
       command: ["tail", "-f", "/dev/null"]
- 
         
    labcas-ui: 
       image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
