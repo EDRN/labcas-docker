@@ -64,7 +64,7 @@ services:
       env_file: $LABCAS_CONFIG/ui.env
       volumes: 
         - $LABCAS_STAGING:/usr/local/labcas_staging
-        - $LABCAS_CONFIG/labcas_certs:/app/certs
+        - $LABCAS_CERTS:/app/certs
         - $LABCAS_CONFIG/paste.cfg:/app/persistence/paste.cfg
         - persistence:/app/persistence
       depends_on:
