@@ -29,8 +29,8 @@ services:
      volumes:
         # override default nginx configuration
         - ./nginx/conf/nginx_proxy.conf:/etc/nginx/conf.d/default.conf:ro
-        # static we content
-        - $LABCAS_HOME/static:/usr/local/labcas/static
+        # static web content
+        - $LABCAS_INSTALL/static:/usr/local/labcas/static
      depends_on:
        - labcas-backend 
        - labcas-ui
@@ -40,15 +40,15 @@ services:
       build:
         context: ./labcas-backend
       volumes: 
-        - $LABCAS_STAGING:/usr/local/labcas/staging
-        - $LABCAS_ARCHIVE:/usr/local/labcas/archive
-        - $LABCAS_HOME/solr-index:/usr/local/labcas/home/solr-index
-        - $LABCAS_HOME/products:/usr/local/labcas/home/products
-        - $LABCAS_HOME/static:/usr/local/labcas/static
-        - $LABCAS_CONFIG/labcas.properties:/root/labcas.properties
+        - $LABCAS_INSTALL/staging:/usr/local/labcas/staging
+        - $LABCAS_INSTALL/archive:/usr/local/labcas/archive
+        - $LABCAS_INSTALL/home/solr-index:/usr/local/labcas/home/solr-index
+        - $LABCAS_INSTALL/home/products:/usr/local/labcas/home/products
+        - $LABCAS_INSTALL/static:/usr/local/labcas/static
+        - $LABCAS_INSTALL/config/labcas.properties:/root/labcas.properties
         - $LABCAS_CERTS:/root/certs
-      ports:
-        - "8983:8983"
+      #ports:
+      #  - "8983:8983"
         
    labcas-client: 
       image: edrn/labcas-client:${LABCAS_BK_VERSION-latest}
@@ -57,8 +57,8 @@ services:
       volumes: 
         # NOTE: the labcas-client must share she same target filesystem as the labcas-backend
         # to be able to crawl a directory tree and submit publishing requests
-        - $LABCAS_STAGING:/usr/local/labcas/staging
-        - $LABCAS_ARCHIVE:/usr/local/labcas/archive
+        - $LABCAS_INSTALL/staging:/usr/local/labcas/staging
+        - $LABCAS_INSTALL/archive:/usr/local/labcas/archive
         # FIXME: for development only
         #- $HOME/eclipse-workspace/labcas-backend/common/src/main/python:/usr/local/labcas/python
       # keep the container running to execute publishing operations
@@ -68,10 +68,10 @@ services:
       image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
       env_file: $LABCAS_CONFIG/ui.env
       volumes: 
-        - $LABCAS_STAGING:/usr/local/labcas_staging
+        - $LABCAS_INSTALL/staging:/usr/local/labcas_staging
         - $LABCAS_CERTS:/app/certs
-        - $LABCAS_CONFIG/paste.cfg:/app/persistence/paste.cfg
-        - persistence:/app/persistence
+        - $LABCAS_INSTALL/config/paste.cfg:/app/persistence/paste.cfg
+        - $LABCAS_INSTALL/persistence:/app/persistence
       depends_on:
         - labcas-backend  
       healthcheck:
@@ -79,6 +79,3 @@ services:
             interval: 5m
             timeout: 10s
             retries: 3
-
-volumes:
-    persistence:

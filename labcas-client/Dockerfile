@@ -3,7 +3,7 @@
 FROM continuumio/miniconda
 
 RUN apt-get update &&\
-    apt-get install -y gcc
+    apt-get install -y gcc vim
 
 # Install Python libraries needed by LabCAS client
 RUN pip install --upgrade pip
