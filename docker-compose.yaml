@@ -47,8 +47,8 @@ services:
         - $LABCAS_INSTALL/static:/usr/local/labcas/static
         - $LABCAS_INSTALL/config/labcas.properties:/root/labcas.properties
         - $LABCAS_CERTS:/root/certs
-      #ports:
-      #  - "8983:8983"
+      ports:
+        - "8983:8983"
         
    labcas-client: 
       image: edrn/labcas-client:${LABCAS_BK_VERSION-latest}
@@ -70,8 +70,8 @@ services:
       volumes: 
         - $LABCAS_INSTALL/staging:/usr/local/labcas_staging
         - $LABCAS_CERTS:/app/certs
+        - persistence:/app/persistence
         - $LABCAS_INSTALL/config/paste.cfg:/app/persistence/paste.cfg
-        - $LABCAS_INSTALL/persistence:/app/persistence
       depends_on:
         - labcas-backend  
       healthcheck:
@@ -79,3 +79,6 @@ services:
             interval: 5m
             timeout: 10s
             retries: 3
+
+volumes: 
+  persistence: 
