@@ -42,8 +42,11 @@ services:
         - $LABCAS_ARCHIVE:/usr/local/labcas/archive
         - $LABCAS_HOME/solr-index:/usr/local/labcas/home/solr-index
         - $LABCAS_HOME/products:/usr/local/labcas/home/products
+        - $LABCAS_HOME/thumbnails:/usr/local/labcas/thumbnails
         - $LABCAS_CONFIG/labcas.properties:/root/labcas.properties
         - $LABCAS_CERTS:/root/certs
+      ports:
+        - "8983:8983"
         
    labcas-client: 
       image: edrn/labcas-client:${LABCAS_BK_VERSION-latest}

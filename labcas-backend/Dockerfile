@@ -37,7 +37,7 @@ FROM openjdk:9-jre
 
 # install supervisor in sysyem python
 RUN apt-get update && \
-    apt-get install -y supervisor
+    apt-get install -y supervisor gcc
 
 # copy all built-up services to $LABCAS_HOME
 ENV LABCAS_HOME /usr/local/labcas/home
@@ -62,6 +62,16 @@ EXPOSE 9000 9001 8983 8080
 #COPY scripts/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY conf/supervisord.conf /etc/supervisord.conf
 COPY conf/supervisord-*.conf /etc/supervisor/conf.d/
+
+# Install Python libraries necessary to run server-side Python scripts
+RUN apt-get update &&\
+    apt-get install -y python-pip python-dev build-essential
+RUN pip install --upgrade pip
+RUN pip install --upgrade virtualenv
+COPY requirements.txt /tmp/requirements.txt
+RUN cd $HOME &&\
+    virtualenv labcas_venv
+RUN /bin/bash -c "source $HOME/labcas_venv/bin/activate && pip install -r /tmp/requirements.txt"      
 
 # start supervisor in non-daemon mode
 CMD ["supervisord", "--nodaemon", "-c", "/etc/supervisord.conf"]

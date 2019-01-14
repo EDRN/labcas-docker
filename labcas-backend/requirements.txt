@@ -1,0 +1,7 @@
+solrpy
+numpy
+Pillow
+pydicom
+pypng
+pandas
+openslide-python
