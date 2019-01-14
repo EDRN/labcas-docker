@@ -73,6 +73,9 @@ RUN cd $HOME &&\
     virtualenv labcas_venv
 RUN /bin/bash -c "source $HOME/labcas_venv/bin/activate && pip install -r /tmp/requirements.txt"      
 
+# must also install the openslide library for openslide-python to work
+RUN apt-get install -y openslide-tools
+
 # start supervisor in non-daemon mode
 CMD ["supervisord", "--nodaemon", "-c", "/etc/supervisord.conf"]
 #CMD ["/usr/local/bin/docker-entrypoint.sh"]
