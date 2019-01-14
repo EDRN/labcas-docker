@@ -37,7 +37,7 @@ FROM openjdk:9-jre
 
 # install supervisor in sysyem python
 RUN apt-get update && \
-    apt-get install -y supervisor gcc
+    apt-get install -y supervisor gcc vim
 
 # copy all built-up services to $LABCAS_HOME
 ENV LABCAS_HOME /usr/local/labcas/home
