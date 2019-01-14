@@ -12,7 +12,7 @@ fi
 solr_url="http://labcas-backend:8983/solr"
 
 echo "Deleting Files for CollectionId=$collection_id"
-wget ${solr_url}/files/update?stream.body=<delete><query>CollectionId:${collection_id}</query></delete>&commit=true"
+wget "${solr_url}/files/update?stream.body=<delete><query>CollectionId:${collection_id}</query></delete>&commit=true"
 
 echo "Deleting Datasets for CollectionId=$collection_id"
 wget "${solr_url}/datasets/update?stream.body=<delete><query>CollectionId:${collection_id}</query></delete>&commit=true"
