@@ -66,7 +66,7 @@ services:
         
    labcas-ui: 
       image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
-      env_file: $LABCAS_CONFIG/ui.env
+      env_file: $LABCAS_INSTALL/config/ui.env
       volumes: 
         - $LABCAS_INSTALL/staging:/usr/local/labcas_staging
         - $LABCAS_CERTS:/app/certs
