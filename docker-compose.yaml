@@ -71,7 +71,6 @@ services:
         - $LABCAS_INSTALL/staging:/usr/local/labcas_staging
         - $LABCAS_CERTS:/app/certs
         - persistence:/app/persistence
-        - $LABCAS_INSTALL/config/paste.cfg:/app/persistence/paste.cfg
       depends_on:
         - labcas-backend  
       healthcheck:
