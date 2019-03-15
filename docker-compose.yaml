@@ -47,8 +47,10 @@ services:
         - $LABCAS_INSTALL/static:/usr/local/labcas/static
         - $LABCAS_INSTALL/config/labcas.properties:/root/labcas.properties
         - $LABCAS_CERTS:/root/certs
-      #ports:
-      #  - "8983:8983"
+      ports:  
+        - "${SOLR_PORT}:8983"
+        - "${WMGR_PORT}:9001"
+
         
    labcas-client: 
       image: edrn/labcas-client:${LABCAS_BK_VERSION-latest}
