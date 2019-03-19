@@ -1,4 +1,5 @@
 # LabCAS environment for EDRN consortium
+export LABCAS_NETWORK=edrn-network
 export LABCAS_PORT=1080
 export SOLR_PORT=8983
 export WMGR_PORT=9001

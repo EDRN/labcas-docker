@@ -1,4 +1,5 @@
 # LabCAS environment for MCL consortium
+export LABCAS_NETWORK=mcl-network
 export LABCAS_PORT=1081
 export SOLR_PORT=8984
 export WMGR_PORT=9002

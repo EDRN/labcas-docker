@@ -1,4 +1,5 @@
 # LabCAS environment for CIB consortium
+export LABCAS_NETWORK=cib-network
 export LABCAS_PORT=1082
 export SOLR_PORT=8985
 export WMGR_PORT=9003
