@@ -4,17 +4,18 @@
 # nginx proxy
 
 # Required env variables: 
-# LABCAS_CONSORTIUM: name of consortium specific configuration
+# LABCAS_NETWORK: pre-existing Docker network that connects all these containers
+#                 when running on AWS with JPL security, it must be configured to
+#                 connect to the internet
 # LABCAS_PORT: host port that is proxied to Nginx port 80
-# LABCAS_CONFIG: location of configuration directory
-# LABCAS_STAGING: location of temporary data storage
-# LABCAS_ARCHIVE: location of permanent sara storage
-# LABCAS_HOME: location containig solr-index directory
+# SOLR_PORT: port where Solr is available for local publishing operations
+# WMGR_PORT: port where the OODT Workflow Manager is available for local publishing operations
+# LABCAS_CONSORTIUM: name of consortium specific configuration
+# LABCAS_INSTALL: location of LabCAS installation
 
 # Required configuration files:
 # $LABCAS_CONFIG/$LABCAS_CONSORTIUM/labcas.properties
 # $LABCAS_CONFIG/$LABCAS_CONSORTIUM/labcas_certs
-# $LABCAS_CONFIG/$LABCAS_CONSORTIUM/paste.cfg
 # $LABCAS_CONFIG/$LABCAS_CONSORTIUM/ui.env
 
 version: '3.3'
