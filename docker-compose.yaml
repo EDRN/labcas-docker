@@ -74,9 +74,10 @@ services:
         
    labcas-ui: 
       image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
+      build: ./labcas-ui
       env_file: $LABCAS_INSTALL/config/ui.env
       volumes: 
-        - $LABCAS_INSTALL/staging:/usr/local/labcas_staging
+        - $LABCAS_INSTALL/staging:/usr/local/labcas/backend/staging
         - $LABCAS_CERTS:/app/certs
         - persistence:/app/persistence
       depends_on:
