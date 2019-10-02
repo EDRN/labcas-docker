@@ -89,7 +89,7 @@ services:
             retries: 3
             
    labcas-publish-api:
-     image: edrn/labcas-ui:${LABCAS_PUBLISH_API_VERSION-latest}
+     image: edrn/labcas-publish-api:${LABCAS_PUBLISH_API_VERSION-latest}
      build:
        context: ./labcas-publish-api
      # override entrypoint to connect to the Solr server on this network
