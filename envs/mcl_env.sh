@@ -2,6 +2,7 @@
 export LABCAS_NETWORK=mcl-network
 export LABCAS_PORT=1081
 export SOLR_PORT=8984
+export PUBLISH_API_PORT=5001
 export WMGR_PORT=9002
 export LABCAS_CONSORTIUM=mcl
 export LABCAS_INSTALL=/efs/docker/labcas/mcl

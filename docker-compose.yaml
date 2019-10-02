@@ -87,6 +87,13 @@ services:
             interval: 5m
             timeout: 10s
             retries: 3
+            
+   labcas-publish-api:
+     image: edrn/labcas-ui:${LABCAS_PUBLISH_API_VERSION-latest}
+     build:
+       context: ./labcas-publish-api
+     ports:
+       - "${PUBLISH_API_PORT}:5000"
 
 volumes: 
   persistence: 
