@@ -92,6 +92,7 @@ services:
      image: edrn/labcas-ui:${LABCAS_PUBLISH_API_VERSION-latest}
      build:
        context: ./labcas-publish-api
+     entrypoint: ["python", "-u", "api.py", "solr_port=${SOLR_PORT}"]
      ports:
        - "${PUBLISH_API_PORT}:5000"
 

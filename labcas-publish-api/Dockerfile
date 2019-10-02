@@ -12,7 +12,7 @@ RUN mkdir /app &&\
     cd /app &&\
     git clone https://github.com/EDRN/labcas_publish_api.git
     
-# run the server
+# start the server with default solr port
 WORKDIR /app/labcas_publish_api
-ENTRYPOINT ["python", "-u", "api.py"]
+ENTRYPOINT ["python", "-u", "api.py", "solr_port=8983"]
     
