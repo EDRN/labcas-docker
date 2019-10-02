@@ -92,9 +92,18 @@ services:
      image: edrn/labcas-ui:${LABCAS_PUBLISH_API_VERSION-latest}
      build:
        context: ./labcas-publish-api
-     entrypoint: ["python", "-u", "api.py", "solr_port=${SOLR_PORT}"]
+     # override entrypoint to connect to the Solr server on this network
+     entrypoint: python -u api.py solr_url=http://labcas-backend:8983/solr/
+     # expose the publish API to clients on the external host
      ports:
        - "${PUBLISH_API_PORT}:5000"
+     environment:
+       - LABCAS_INSTALL=/usr/local/labcas
+     volumes:
+       - $LABCAS_INSTALL/archive:/usr/local/labcas/archive
+       # FIXME: must bind flask to all interfaces inside the Docker container
+       - ./labcas-publish-api/api.py:/app/labcas_publish_api/api.py
+     
 
 volumes: 
   persistence: 
