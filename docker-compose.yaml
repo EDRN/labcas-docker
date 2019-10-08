@@ -101,9 +101,7 @@ services:
        - LABCAS_INSTALL=/usr/local/labcas
      volumes:
        - $LABCAS_INSTALL/archive:/usr/local/labcas/archive
-       # FIXME: must bind flask to all interfaces inside the Docker container
-       #- ./labcas-publish-api/api.py:/app/labcas_publish_api/api.py
-     
+       - $HOME/.aws/credentials:/root/.aws/credentials     
 
 volumes: 
   persistence: 
