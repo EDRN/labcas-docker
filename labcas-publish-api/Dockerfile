@@ -5,9 +5,12 @@ RUN apt-get update &&\
     apt-get install -y git
 
 # install source code
+# FIXME: use master branch
 RUN mkdir /app &&\
     cd /app &&\
-    git clone https://github.com/EDRN/labcas_publish_api.git
+    git clone https://github.com/EDRN/labcas_publish_api.git &&\
+    cd labcas_publish_api &&\
+    git checkout luca
     
 # install dependencies
 RUN cd /app/labcas_publish_api &&\
