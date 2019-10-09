@@ -7,3 +7,4 @@ export WMGR_PORT=9001
 export LABCAS_CONSORTIUM=edrn
 export LABCAS_INSTALL=/efs/docker/labcas/edrn
 export LABCAS_CERTS=/efs/docker/labcas/certs
+export S3_BUCKET=edrn-bucket

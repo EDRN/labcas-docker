@@ -103,7 +103,7 @@ services:
      build:
        context: ./labcas-publish-api
      # override entrypoint to connect to the Solr server on this network
-     entrypoint: python -u api.py solr_url=http://labcas-backend:8983/solr/
+     entrypoint: python -u api.py solr_url=http://labcas-backend:8983/solr/ s3_bucket=${S3_BUCKET}
      # expose the publish API to clients on the external host
      ports:
        - "${PUBLISH_API_PORT}:5000"
