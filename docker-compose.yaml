@@ -48,6 +48,7 @@ services:
       # custom configuration to use '/labcas-ui/' root URL
       volumes:
         - ./labcas-ui2/nginx.conf:/etc/nginx/conf.d/default.conf
+        - ./environment.cfg:/usr/share/nginx/html/assets/conf/environment.cfg
       #ports:
       #  - "8081:80"
 
