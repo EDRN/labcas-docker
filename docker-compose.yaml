@@ -56,6 +56,9 @@ services:
       image: edrn/labcas-backend:${LABCAS_BK_VERSION-latest}
       build:
         context: ./labcas-backend
+      environment:
+        AWS_REGION: us-west-2
+        AWS_S3_READONLY_PROFILE: saml
       volumes: 
         - $LABCAS_INSTALL/staging:/usr/local/labcas/staging
         - $LABCAS_INSTALL/archive:/usr/local/labcas/archive
