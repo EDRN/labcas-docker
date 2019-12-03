@@ -59,6 +59,8 @@ services:
       environment:
         AWS_REGION: us-west-2
         AWS_S3_READONLY_PROFILE: saml
+        # FIXME: set to 20
+        AWS_DOWNLOAD_URL_EXPIRATION_TIME_SECS: 300
       volumes: 
         - $LABCAS_INSTALL/staging:/usr/local/labcas/staging
         - $LABCAS_INSTALL/archive:/usr/local/labcas/archive
