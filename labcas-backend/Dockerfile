@@ -10,10 +10,11 @@ MAINTAINER Luca Cinquini <luca.cinquini@jpl.nasa.gov>
 RUN apt-get update
 
 # checkout LabCAS source
+# FIXME
 ENV LABCAS_SRC /tmp
 RUN cd $LABCAS_SRC && \
     git clone https://github.com/EDRN/labcas-backend.git
-    # cd labcas-backend
+    # cd labcas-backend &&\
     # git checkout -b devel origin/devel
 
 # install all services into $LABCAS_HOME
