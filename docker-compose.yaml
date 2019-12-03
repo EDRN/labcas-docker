@@ -64,6 +64,7 @@ services:
         - $LABCAS_INSTALL/static:/usr/local/labcas/static
         - $LABCAS_INSTALL/config/labcas.properties:/root/labcas.properties
         - $LABCAS_CERTS:/root/certs
+        - $HOME/.aws/credentials:/root/.aws/credentials
       ports:  
         - "${SOLR_PORT}:8983"
         - "${WMGR_PORT}:9001"
