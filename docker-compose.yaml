@@ -61,6 +61,7 @@ services:
         AWS_S3_READONLY_PROFILE: saml
         # FIXME: set to 20
         AWS_DOWNLOAD_URL_EXPIRATION_TIME_SECS: 300
+        S3_BUCKET: 
       volumes: 
         - $LABCAS_INSTALL/staging:/usr/local/labcas/staging
         - $LABCAS_INSTALL/archive:/usr/local/labcas/archive
