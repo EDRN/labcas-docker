@@ -7,7 +7,7 @@ export WMGR_PORT=9002
 export LABCAS_CONSORTIUM=mcl
 export LABCAS_INSTALL=/efs/docker/labcas/mcl
 export LABCAS_CERTS=/efs/docker/labcas/certs
-export S3_BUCKET=mcl-bucket
+export S3_BUCKET=mcl-labcas
 
 export QUIP_DATA=/efs/docker/labcas/mcl/quip_data
 # location of caMicroscope images == labcas archive

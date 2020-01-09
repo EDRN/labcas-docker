@@ -7,4 +7,4 @@ export WMGR_PORT=9003
 export LABCAS_CONSORTIUM=cib
 export LABCAS_INSTALL=/efs/docker/labcas/cib
 export LABCAS_CERTS=/efs/docker/labcas/certs
-export S3_BUCKET=cib-bucket
+export S3_BUCKET=cib-labcas
