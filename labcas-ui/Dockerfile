@@ -20,10 +20,7 @@ RUN apt-get update -y \
     && pip install --upgrade pip setuptools
     
 # clone repo from GitHub
-# FIXME: use master
-RUN git clone https://github.com/EDRN/edrn.labcas.ui.git /app &&\
-    cd /app &&\
-    git checkout Development
+RUN git clone https://github.com/EDRN/edrn.labcas.ui.git /app
 
 # Doing this first for caching reasons, apparently
 # (??? see https://runnable.com/docker/python/dockerize-your-pyramid-application)
