@@ -42,7 +42,7 @@ services:
        - labcas-ui
        
    labcas-ui2:
-      image: edrn/labcas-ui2:${LABCAS_UI2_VERSION-latest}
+      image: edrn/labcas-ui2
       build:
         context: ./labcas-ui2
       # custom configuration to use '/labcas-ui/' root URL
