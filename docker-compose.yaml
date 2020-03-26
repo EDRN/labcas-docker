@@ -40,6 +40,7 @@ services:
      depends_on:
        - labcas-backend 
        - labcas-ui
+     restart: always
        
    labcas-ui2:
       image: edrn/labcas-ui2
@@ -52,11 +53,13 @@ services:
         - $LABCAS_INSTALL/thumbnails:/usr/share/nginx/html/assets/thumbnails
       # ports:
       #  - "8081:80"
+      restart: always
 
    labcas-backend: 
       image: edrn/labcas-backend:${LABCAS_BK_VERSION-latest}
       build:
         context: ./labcas-backend
+      restart: always
       environment:
         AWS_REGION: us-west-2
         AWS_S3_READONLY_PROFILE: saml
@@ -80,6 +83,7 @@ services:
       image: edrn/labcas-ui:${LABCAS_UI_VERSION-latest}
       build: ./labcas-ui
       env_file: $LABCAS_INSTALL/config/ui.env
+      restart: always
       volumes: 
         - $LABCAS_INSTALL/staging:/usr/local/labcas/backend/staging
         - $LABCAS_CERTS:/app/certs
@@ -96,6 +100,7 @@ services:
      image: edrn/labcas-publish-api:${LABCAS_PUBLISH_API_VERSION-latest}
      build:
        context: ./labcas-publish-api
+     restart: always
      # override entrypoint to connect to the Solr server on this network
      entrypoint: python -u api.py solr_url=http://labcas-backend:8983/solr/ s3_bucket=${S3_BUCKET}
      # expose the publish API to clients on the external host
