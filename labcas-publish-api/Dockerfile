@@ -11,9 +11,9 @@ RUN apt-get install -y openslide-tools
 # FIXME: use master branch
 RUN mkdir /app &&\
     cd /app &&\
-    git clone https://github.com/EDRN/labcas_publish_api.git
-#   cd labcas_publish_api &&\
-#   git checkout develop
+    git clone https://github.com/EDRN/labcas_publish_api.git &&\
+    cd labcas_publish_api &&\
+    git checkout meta_dist
     
 # install dependencies
 RUN cd /app/labcas_publish_api &&\
